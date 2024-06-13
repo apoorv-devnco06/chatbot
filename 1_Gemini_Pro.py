@@ -16,13 +16,11 @@ st.set_page_config(
 
 st.title("Chat To ZenBot")
 st.caption("a chatbot, based on zendesk data.")
-
-
-icon_pattern = re.compile(r'\[T\d\]') 
-question = "who is mark?" 
+ 
+icon_pattern = re.compile(r'\[T\d\]')  
 headers = { 
     "atoken" : "68VPUcYDMHFdi6SiG7uCb",
-    "chatpdf-idtoken" : "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzMDUxMThiZTBmNTZkYzA4NGE0NmExN2RiNzU1NjVkNzY4YmE2ZmUiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQXBvb3J2IEJhbGV0aWEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jS2dRaHVqMURsSkV5dHQtZlQyT3BZaExkZDIzNWRQX3RsZ0toNG9LWTFZMUxwNlVnPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3RhbGstdG8tYW55dGhpbmciLCJhdWQiOiJ0YWxrLXRvLWFueXRoaW5nIiwiYXV0aF90aW1lIjoxNzE2Mzc5Mzk0LCJ1c2VyX2lkIjoiNVVldjRzQWt4ZU42TE5LczFYQjZRYUlQSlpiMiIsInN1YiI6IjVVZXY0c0FreGVONkxOS3MxWEI2UWFJUEpaYjIiLCJpYXQiOjE3MTgzMTE4MzEsImV4cCI6MTcxODMxNTQzMSwiZW1haWwiOiJidW5ueWJhbGF0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTE2MjAzMjY5Njc2MDE0NTE4NTY0Il0sImVtYWlsIjpbImJ1bm55YmFsYXRAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.ctY6qABGzVa73HN3xbFHZiPurQXJt3YIhJvGyWM-xk2dQ_ocm4CZeI0mU-a6wgIa8nKIMUxl3RndngVt1AxIfTLJsPmKjZmf6X10hTSrE_0P6-0k4ZKCKi0_cbzc5qp--FcUxguw-9v2o3k_wA4fjS2NOACyFq1zy1Ape-wwQXQYaCMFSzdxQyherMGSyqQrVcD1-MgbbDvkOq9c9oUPrINoSagHMKQIJfH2YyLdzlZ-NyC8IrRY26FHCIBjdNmKrPT55-ulHOYFRgpeRqDPvOv_TwbHe1sn5jutBnkSzxla6yn8zuGEqRdipK4RVg0Nfbit0dRnGfewXxu1zUUk4g",
+    "chatpdf-idtoken" : "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzMDUxMThiZTBmNTZkYzA4NGE0NmExN2RiNzU1NjVkNzY4YmE2ZmUiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQXBvb3J2IEJhbGV0aWEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jS2dRaHVqMURsSkV5dHQtZlQyT3BZaExkZDIzNWRQX3RsZ0toNG9LWTFZMUxwNlVnPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3RhbGstdG8tYW55dGhpbmciLCJhdWQiOiJ0YWxrLXRvLWFueXRoaW5nIiwiYXV0aF90aW1lIjoxNzE2Mzc5Mzk0LCJ1c2VyX2lkIjoiNVVldjRzQWt4ZU42TE5LczFYQjZRYUlQSlpiMiIsInN1YiI6IjVVZXY0c0FreGVONkxOS3MxWEI2UWFJUEpaYjIiLCJpYXQiOjE3MTgzMTUxMzIsImV4cCI6MTcxODMxODczMiwiZW1haWwiOiJidW5ueWJhbGF0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTE2MjAzMjY5Njc2MDE0NTE4NTY0Il0sImVtYWlsIjpbImJ1bm55YmFsYXRAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.DrfsB3_PSLGC9DK_GUGCKNkfnYsdjWaJytCtsXWcWdX9cFM8ulyADK6fAtM1_kz90BVNIQtoI5CuStM3JGLJ2glDCOnsimYkJM7k8NerMnpKS3x1_LommAQe_U_XFWgTx66Ys8rQBXq9YemPvciqDUM2IWvHHF70gt0yjGWGQJkzRiiqENBQd_Fz3pLrXgNohz07fr0jsfmPhxIgUO40CGWOlld_M1V5F9KKrEsm6-ClheCESn9VXHhx0Xx_MX03lJsh2LoNQRsB7ECBUGOkXYIzzzRNW_e-dVqt3pd27uYR5o2h3NDee2B7SMwDbsJAHpNcKQyEONA0EjGrCv_pdA",
     "Content-Type": "application/json", 
 } 
  
@@ -77,14 +75,17 @@ if prompt := st.chat_input("Ask something"):
         ]
     } 
     response = requests.post('https://chat-pr4yueoqha-ue.a.run.app/', headers=headers, json=data) 
-    content = "Couldn't Connect to Cloud" 
+    content = "" 
 
     if response.status_code == 200: 
         content =  response.content.decode("utf-8")
         print(content) 
     
     if content != "":
-        content = content.split("\n",1)[1]  
+        content = content.split("\n",1)[1] 
+    else :
+        content = "Couldn't Connect to Cloud" 
+             
         
     x = re.findall(icon_pattern, content) 
     content = icon_pattern.sub("", content) 
