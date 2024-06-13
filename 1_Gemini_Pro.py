@@ -20,7 +20,7 @@ st.caption("a chatbot, based on zendesk data.")
 icon_pattern = re.compile(r'\[T\d\]')  
 headers = { 
     "atoken" : "68VPUcYDMHFdi6SiG7uCb",
-    "chatpdf-idtoken" : "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzMDUxMThiZTBmNTZkYzA4NGE0NmExN2RiNzU1NjVkNzY4YmE2ZmUiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQXBvb3J2IEJhbGV0aWEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jS2dRaHVqMURsSkV5dHQtZlQyT3BZaExkZDIzNWRQX3RsZ0toNG9LWTFZMUxwNlVnPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3RhbGstdG8tYW55dGhpbmciLCJhdWQiOiJ0YWxrLXRvLWFueXRoaW5nIiwiYXV0aF90aW1lIjoxNzE2Mzc5Mzk0LCJ1c2VyX2lkIjoiNVVldjRzQWt4ZU42TE5LczFYQjZRYUlQSlpiMiIsInN1YiI6IjVVZXY0c0FreGVONkxOS3MxWEI2UWFJUEpaYjIiLCJpYXQiOjE3MTgzMTUxMzIsImV4cCI6MTcxODMxODczMiwiZW1haWwiOiJidW5ueWJhbGF0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTE2MjAzMjY5Njc2MDE0NTE4NTY0Il0sImVtYWlsIjpbImJ1bm55YmFsYXRAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.DrfsB3_PSLGC9DK_GUGCKNkfnYsdjWaJytCtsXWcWdX9cFM8ulyADK6fAtM1_kz90BVNIQtoI5CuStM3JGLJ2glDCOnsimYkJM7k8NerMnpKS3x1_LommAQe_U_XFWgTx66Ys8rQBXq9YemPvciqDUM2IWvHHF70gt0yjGWGQJkzRiiqENBQd_Fz3pLrXgNohz07fr0jsfmPhxIgUO40CGWOlld_M1V5F9KKrEsm6-ClheCESn9VXHhx0Xx_MX03lJsh2LoNQRsB7ECBUGOkXYIzzzRNW_e-dVqt3pd27uYR5o2h3NDee2B7SMwDbsJAHpNcKQyEONA0EjGrCv_pdA",
+    "chatpdf-idtoken" : "eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzMDUxMThiZTBmNTZkYzA4NGE0NmExN2RiNzU1NjVkNzY4YmE2ZmUiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQXBvb3J2IEJhbGV0aWEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jS2dRaHVqMURsSkV5dHQtZlQyT3BZaExkZDIzNWRQX3RsZ0toNG9LWTFZMUxwNlVnPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3RhbGstdG8tYW55dGhpbmciLCJhdWQiOiJ0YWxrLXRvLWFueXRoaW5nIiwiYXV0aF90aW1lIjoxNzE2Mzc5Mzk0LCJ1c2VyX2lkIjoiNVVldjRzQWt4ZU42TE5LczFYQjZRYUlQSlpiMiIsInN1YiI6IjVVZXY0c0FreGVONkxOS3MxWEI2UWFJUEpaYjIiLCJpYXQiOjE3MTgzMTg0MzIsImV4cCI6MTcxODMyMjAzMiwiZW1haWwiOiJidW5ueWJhbGF0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTE2MjAzMjY5Njc2MDE0NTE4NTY0Il0sImVtYWlsIjpbImJ1bm55YmFsYXRAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.VRO-ttw879w-OtdfR9KHmpi8n3BNszxdSDrw78IPlTAH1dzvHrslikno1LebyVUKhJugbZvKNJQD2XHLZG-jQifqmhlV6YOYq2fbXRo62qzfCq270POqB7Z5nSMrjoOnTliMOKxQqIH69Bo5OEhAiQTCGCh3_m9ZeWKg5-RHN70rwMOUD7vcQRPJUeC-tfo9nGEvDECFojEkZL1_Ef_sDLJUR2ZCXw4aLXHdWljERZAvMfR5dxqdraWW4qLUiE8Jrwl5hpv94Fb1gKNgF-FyzBSMXDq5qj7dEze2OJ9H6f_dgyJaKCfuiQdMTpd4pp-Ue97Euhmj5IcWj6g4I-2NwA",
     "Content-Type": "application/json", 
 } 
  
@@ -67,7 +67,46 @@ if prompt := st.chat_input("Ask something"):
             "chatId": "cha_1oNtB90HT9T6bW8imTNyp"
         },
         "history": [
-            { 
+            {
+            "id": "t58WvDsNkT",
+            "author": "u5Uev4sAkxeN6LNKs1XB6QaIPJZb2",
+            "msg": "How do I add 2scene.com to the blocked sender list?",
+            "time": 1718318346536
+            },
+            {
+            "id": "bBUqVCyYzl",
+            "author": "AI",
+            "msg": "To add 2scene.com to the blocked sender list in email clients like Outlook, you can follow these steps:\n\n1. Right-click on the email from the sender (2scene.com).\n2. Select the \"Junk\" or \"Block Sender\" option.\n\nBy doing this, future emails from 2scene.com will either be moved to the junk folder or blocked entirely [T6].",
+            "time": 1718318346537,
+            "chunks": [
+                    {
+                    "i": 12,
+                    "s": "src_ibTsSp7gTpoLGPEQyNw0e"
+                    },
+                    {
+                    "i": 20,
+                    "s": "src_ibTsSp7gTpoLGPEQyNw0e"
+                    },
+                    {
+                    "i": 7,
+                    "s": "src_ibTsSp7gTpoLGPEQyNw0e"
+                    },
+                    {
+                    "i": 78,
+                    "s": "src_ibTsSp7gTpoLGPEQyNw0e"
+                    },
+                    {
+                    "i": 69,
+                    "s": "src_ibTsSp7gTpoLGPEQyNw0e"
+                    },
+                    {
+                    "i": 0,
+                    "s": "src_ibTsSp7gTpoLGPEQyNw0e"
+                    }
+                ]
+            },            
+            {  
+            "id": "OtaP1Q-Xhw",
             "author": "uplaceholder",
             "msg": prompt,
             "time": epoch_time
@@ -89,7 +128,9 @@ if prompt := st.chat_input("Ask something"):
         
     x = re.findall(icon_pattern, content) 
     content = icon_pattern.sub("", content) 
- 
+    print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx") 
+    print(len(x)) 
+    
     if len(x) == 0 and casualFlag == 0 : 
         content =  "I apologize, but I cannot provide an answer to your question as the information provided in my knowledgebase is not enough." 
 
