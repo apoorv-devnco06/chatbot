@@ -90,8 +90,8 @@ if prompt := st.chat_input("Ask something"):
     x = re.findall(icon_pattern, content) 
     content = icon_pattern.sub("", content) 
  
-    #if len(x) == 0 and casualFlag == 0 : 
-        #content =  "I apologize, but I cannot provide an answer to your question as the information provided in my knowledgebase is not enough." 
+    if len(x) == 0 and casualFlag == 0 : 
+        content =  "I apologize, but I cannot provide an answer to your question as the information provided in my knowledgebase is not enough." 
 
     response = content
     # Display assistant response in chat message container
