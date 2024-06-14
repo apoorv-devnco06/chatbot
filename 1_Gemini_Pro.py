@@ -131,7 +131,7 @@ if prompt := st.chat_input("Ask something"):
     print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx") 
     print(len(x)) 
     
-    if len(x) == 0 and casualFlag == 0 : 
+    if len(x) == 0 and casualFlag == 0 and content != "Couldn't Connect to Cloud" : 
         content =  "I apologize, but I cannot provide an answer to your question as the information provided in my knowledgebase is not enough." 
 
     response = content
